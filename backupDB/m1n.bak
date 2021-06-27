@@ -1,0 +1,927 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.7
+-- Dumped by pg_dump version 12.7
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: Address; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Address" (
+    id integer NOT NULL,
+    address text NOT NULL,
+    "addressOwn" integer NOT NULL
+);
+
+
+ALTER TABLE public."Address" OWNER TO postgres;
+
+--
+-- Name: Address_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Address_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Address_id_seq" OWNER TO postgres;
+
+--
+-- Name: Address_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Address_id_seq" OWNED BY public."Address".id;
+
+
+--
+-- Name: Admin; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Admin" (
+    "Aid" integer NOT NULL,
+    "Aemail" text NOT NULL,
+    "Aname" text
+);
+
+
+ALTER TABLE public."Admin" OWNER TO postgres;
+
+--
+-- Name: Admin_Aid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Admin_Aid_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Admin_Aid_seq" OWNER TO postgres;
+
+--
+-- Name: Admin_Aid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Admin_Aid_seq" OWNED BY public."Admin"."Aid";
+
+
+--
+-- Name: Banks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Banks" (
+    "bankName" text NOT NULL,
+    "bankNumber" text NOT NULL,
+    "bankStatus" text NOT NULL,
+    "bankRef" integer NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public."Banks" OWNER TO postgres;
+
+--
+-- Name: Banks_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Banks_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Banks_id_seq" OWNER TO postgres;
+
+--
+-- Name: Banks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Banks_id_seq" OWNED BY public."Banks".id;
+
+
+--
+-- Name: Cards; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Cards" (
+    "cardNumber" text NOT NULL,
+    "cardExp" text NOT NULL,
+    "cardCVV" text NOT NULL,
+    "cardRef" integer NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public."Cards" OWNER TO postgres;
+
+--
+-- Name: Cards_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Cards_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Cards_id_seq" OWNER TO postgres;
+
+--
+-- Name: Cards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Cards_id_seq" OWNED BY public."Cards".id;
+
+
+--
+-- Name: Domain; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Domain" (
+    id integer NOT NULL,
+    "domainName" text NOT NULL,
+    "domainEXP" text NOT NULL,
+    "domainRef" integer NOT NULL
+);
+
+
+ALTER TABLE public."Domain" OWNER TO postgres;
+
+--
+-- Name: Domain_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Domain_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Domain_id_seq" OWNER TO postgres;
+
+--
+-- Name: Domain_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Domain_id_seq" OWNED BY public."Domain".id;
+
+
+--
+-- Name: Email; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Email" (
+    "emailUserLogin" text NOT NULL,
+    "emailPassword" text NOT NULL,
+    "emailNumber" integer NOT NULL,
+    "emailRef" integer NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public."Email" OWNER TO postgres;
+
+--
+-- Name: Email_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Email_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Email_id_seq" OWNER TO postgres;
+
+--
+-- Name: Email_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Email_id_seq" OWNED BY public."Email".id;
+
+
+--
+-- Name: Facebooks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Facebooks" (
+    id integer NOT NULL,
+    "facebookID" text NOT NULL,
+    "facebookName" text NOT NULL,
+    "facebookUsername" text NOT NULL,
+    "facebookPassword" text NOT NULL,
+    "facebookEmailRef" integer NOT NULL,
+    "facebookNumberPhoneRef" integer NOT NULL,
+    "facebookPhoto" text NOT NULL,
+    "facebookRef" integer NOT NULL
+);
+
+
+ALTER TABLE public."Facebooks" OWNER TO postgres;
+
+--
+-- Name: Facebooks_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Facebooks_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Facebooks_id_seq" OWNER TO postgres;
+
+--
+-- Name: Facebooks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Facebooks_id_seq" OWNED BY public."Facebooks".id;
+
+
+--
+-- Name: IDs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."IDs" (
+    id integer NOT NULL,
+    "idFristname" text NOT NULL,
+    "idLastname" text NOT NULL,
+    "idBirthday" timestamp(3) without time zone NOT NULL,
+    "idSmartCard" text NOT NULL,
+    "idRef" integer
+);
+
+
+ALTER TABLE public."IDs" OWNER TO postgres;
+
+--
+-- Name: IDs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."IDs_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."IDs_id_seq" OWNER TO postgres;
+
+--
+-- Name: IDs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."IDs_id_seq" OWNED BY public."IDs".id;
+
+
+--
+-- Name: PhoneNumbers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."PhoneNumbers" (
+    "phoneProvider" text NOT NULL,
+    "phoneNumber" text NOT NULL,
+    "phoneExp" timestamp(3) without time zone NOT NULL,
+    "phoneType" text NOT NULL,
+    "phoneRef" integer NOT NULL,
+    "phoneMobile" text NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public."PhoneNumbers" OWNER TO postgres;
+
+--
+-- Name: PhoneNumbers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."PhoneNumbers_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."PhoneNumbers_id_seq" OWNER TO postgres;
+
+--
+-- Name: PhoneNumbers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."PhoneNumbers_id_seq" OWNED BY public."PhoneNumbers".id;
+
+
+--
+-- Name: Servers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Servers" (
+    id integer NOT NULL,
+    "serverProvider" text NOT NULL,
+    "serverName" text NOT NULL,
+    "serverIP" text NOT NULL
+);
+
+
+ALTER TABLE public."Servers" OWNER TO postgres;
+
+--
+-- Name: Servers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Servers_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Servers_id_seq" OWNER TO postgres;
+
+--
+-- Name: Servers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Servers_id_seq" OWNED BY public."Servers".id;
+
+
+--
+-- Name: User; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."User" (
+    id integer NOT NULL,
+    email text NOT NULL,
+    name text
+);
+
+
+ALTER TABLE public."User" OWNER TO postgres;
+
+--
+-- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."User_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."User_id_seq" OWNER TO postgres;
+
+--
+-- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
+
+
+--
+-- Name: Address id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Address" ALTER COLUMN id SET DEFAULT nextval('public."Address_id_seq"'::regclass);
+
+
+--
+-- Name: Admin Aid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Admin" ALTER COLUMN "Aid" SET DEFAULT nextval('public."Admin_Aid_seq"'::regclass);
+
+
+--
+-- Name: Banks id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Banks" ALTER COLUMN id SET DEFAULT nextval('public."Banks_id_seq"'::regclass);
+
+
+--
+-- Name: Cards id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cards" ALTER COLUMN id SET DEFAULT nextval('public."Cards_id_seq"'::regclass);
+
+
+--
+-- Name: Domain id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Domain" ALTER COLUMN id SET DEFAULT nextval('public."Domain_id_seq"'::regclass);
+
+
+--
+-- Name: Email id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Email" ALTER COLUMN id SET DEFAULT nextval('public."Email_id_seq"'::regclass);
+
+
+--
+-- Name: Facebooks id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Facebooks" ALTER COLUMN id SET DEFAULT nextval('public."Facebooks_id_seq"'::regclass);
+
+
+--
+-- Name: IDs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."IDs" ALTER COLUMN id SET DEFAULT nextval('public."IDs_id_seq"'::regclass);
+
+
+--
+-- Name: PhoneNumbers id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PhoneNumbers" ALTER COLUMN id SET DEFAULT nextval('public."PhoneNumbers_id_seq"'::regclass);
+
+
+--
+-- Name: Servers id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Servers" ALTER COLUMN id SET DEFAULT nextval('public."Servers_id_seq"'::regclass);
+
+
+--
+-- Name: User id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
+
+
+--
+-- Data for Name: Address; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Address" (id, address, "addressOwn") FROM stdin;
+\.
+
+
+--
+-- Data for Name: Admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Admin" ("Aid", "Aemail", "Aname") FROM stdin;
+\.
+
+
+--
+-- Data for Name: Banks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Banks" ("bankName", "bankNumber", "bankStatus", "bankRef", id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Cards; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Cards" ("cardNumber", "cardExp", "cardCVV", "cardRef", id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Domain; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Domain" (id, "domainName", "domainEXP", "domainRef") FROM stdin;
+\.
+
+
+--
+-- Data for Name: Email; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Email" ("emailUserLogin", "emailPassword", "emailNumber", "emailRef", id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Facebooks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Facebooks" (id, "facebookID", "facebookName", "facebookUsername", "facebookPassword", "facebookEmailRef", "facebookNumberPhoneRef", "facebookPhoto", "facebookRef") FROM stdin;
+\.
+
+
+--
+-- Data for Name: IDs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."IDs" (id, "idFristname", "idLastname", "idBirthday", "idSmartCard", "idRef") FROM stdin;
+\.
+
+
+--
+-- Data for Name: PhoneNumbers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."PhoneNumbers" ("phoneProvider", "phoneNumber", "phoneExp", "phoneType", "phoneRef", "phoneMobile", id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Servers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Servers" (id, "serverProvider", "serverName", "serverIP") FROM stdin;
+\.
+
+
+--
+-- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."User" (id, email, name) FROM stdin;
+\.
+
+
+--
+-- Name: Address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Address_id_seq"', 1, false);
+
+
+--
+-- Name: Admin_Aid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Admin_Aid_seq"', 1, false);
+
+
+--
+-- Name: Banks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Banks_id_seq"', 1, false);
+
+
+--
+-- Name: Cards_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Cards_id_seq"', 1, false);
+
+
+--
+-- Name: Domain_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Domain_id_seq"', 1, false);
+
+
+--
+-- Name: Email_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Email_id_seq"', 1, false);
+
+
+--
+-- Name: Facebooks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Facebooks_id_seq"', 1, false);
+
+
+--
+-- Name: IDs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."IDs_id_seq"', 1, false);
+
+
+--
+-- Name: PhoneNumbers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."PhoneNumbers_id_seq"', 1, false);
+
+
+--
+-- Name: Servers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Servers_id_seq"', 1, false);
+
+
+--
+-- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."User_id_seq"', 1, false);
+
+
+--
+-- Name: Address Address_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Address"
+    ADD CONSTRAINT "Address_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Admin Admin_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Admin"
+    ADD CONSTRAINT "Admin_pkey" PRIMARY KEY ("Aid");
+
+
+--
+-- Name: Banks Banks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Banks"
+    ADD CONSTRAINT "Banks_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Cards Cards_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cards"
+    ADD CONSTRAINT "Cards_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Domain Domain_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Domain"
+    ADD CONSTRAINT "Domain_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Email Email_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Email"
+    ADD CONSTRAINT "Email_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Facebooks Facebooks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Facebooks"
+    ADD CONSTRAINT "Facebooks_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: IDs IDs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."IDs"
+    ADD CONSTRAINT "IDs_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: PhoneNumbers PhoneNumbers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PhoneNumbers"
+    ADD CONSTRAINT "PhoneNumbers_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Servers Servers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Servers"
+    ADD CONSTRAINT "Servers_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."User"
+    ADD CONSTRAINT "User_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Admin.Aemail_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Admin.Aemail_unique" ON public."Admin" USING btree ("Aemail");
+
+
+--
+-- Name: User.email_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "User.email_unique" ON public."User" USING btree (email);
+
+
+--
+-- Name: addressOwn; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "addressOwn" ON public."Address" USING btree ("addressOwn");
+
+
+--
+-- Name: bankRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "bankRef" ON public."Banks" USING btree ("bankRef");
+
+
+--
+-- Name: cardRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "cardRef" ON public."Cards" USING btree ("cardRef");
+
+
+--
+-- Name: domainRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "domainRef" ON public."Domain" USING btree ("domainRef");
+
+
+--
+-- Name: emailNumber; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "emailNumber" ON public."Email" USING btree ("emailNumber");
+
+
+--
+-- Name: emailRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "emailRef" ON public."Email" USING btree ("emailRef");
+
+
+--
+-- Name: facebookRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "facebookRef" ON public."Facebooks" USING btree ("facebookRef");
+
+
+--
+-- Name: idRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "idRef" ON public."IDs" USING btree ("idRef");
+
+
+--
+-- Name: phoneRef; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "phoneRef" ON public."PhoneNumbers" USING btree ("phoneRef");
+
+
+--
+-- Name: Address Address_addressOwn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Address"
+    ADD CONSTRAINT "Address_addressOwn_fkey" FOREIGN KEY ("addressOwn") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Banks Banks_bankRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Banks"
+    ADD CONSTRAINT "Banks_bankRef_fkey" FOREIGN KEY ("bankRef") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Cards Cards_cardRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Cards"
+    ADD CONSTRAINT "Cards_cardRef_fkey" FOREIGN KEY ("cardRef") REFERENCES public."Banks"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Domain Domain_domainRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Domain"
+    ADD CONSTRAINT "Domain_domainRef_fkey" FOREIGN KEY ("domainRef") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Email Email_emailNumber_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Email"
+    ADD CONSTRAINT "Email_emailNumber_fkey" FOREIGN KEY ("emailNumber") REFERENCES public."PhoneNumbers"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Email Email_emailRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Email"
+    ADD CONSTRAINT "Email_emailRef_fkey" FOREIGN KEY ("emailRef") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Facebooks Facebooks_facebookEmailRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Facebooks"
+    ADD CONSTRAINT "Facebooks_facebookEmailRef_fkey" FOREIGN KEY ("facebookEmailRef") REFERENCES public."Email"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Facebooks Facebooks_facebookNumberPhoneRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Facebooks"
+    ADD CONSTRAINT "Facebooks_facebookNumberPhoneRef_fkey" FOREIGN KEY ("facebookNumberPhoneRef") REFERENCES public."PhoneNumbers"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: Facebooks Facebooks_facebookRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Facebooks"
+    ADD CONSTRAINT "Facebooks_facebookRef_fkey" FOREIGN KEY ("facebookRef") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: IDs IDs_idRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."IDs"
+    ADD CONSTRAINT "IDs_idRef_fkey" FOREIGN KEY ("idRef") REFERENCES public."Admin"("Aid") ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- Name: PhoneNumbers PhoneNumbers_phoneRef_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."PhoneNumbers"
+    ADD CONSTRAINT "PhoneNumbers_phoneRef_fkey" FOREIGN KEY ("phoneRef") REFERENCES public."IDs"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

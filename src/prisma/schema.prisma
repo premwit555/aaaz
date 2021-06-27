@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+}
+
+model Admin {
+  Aid    Int     @id @default(autoincrement())
+  Aemail String  @unique
+  Aname  String?
+  Awork  IDs[]
+}
+
+model IDs {
+  id          Int      @id @default(autoincrement())
+  idFristname String
+  idLastname  String
+  idBirthday  DateTime
+  idSmartCard String
+  idRef       Int?
+  idAdmin     Admin?   @relation(fields: [idRef], references: [Aid])
+
+  idBank        Banks[]
+  idEmail       Email[]
+  idPhoneNumber PhoneNumbers[]
+
+
+  idAddress   Address[]
+  isFacebooks Facebooks[]
+  isDomain    Domain[]
+  @@index([idRef], name: "idRef")
+}
+
+model Address {
+  id         Int    @id @default(autoincrement())
+  address    String
+  addressRef IDs    @relation(fields: [addressOwn], references: [id])
+
+  addressOwn Int
+
+  @@index([addressOwn], name: "addressOwn")
+}
+
+model PhoneNumbers {
+  phoneProvider String
+  phoneNumber   String
+  phoneExp      DateTime
+  phoneType     String
+  phoneRef      Int
+  phoneMobile   String
+  id            Int      @id @default(autoincrement())
+  phoneOwn      IDs      @relation(fields: [phoneRef], references: [id])
+  Email         Email[]
+
+  phoneFacebooks Facebooks[]
+  @@index([phoneRef], name: "phoneRef")
+}
+
+model Email {
+  emailUserLogin String
+  emailPassword  String
+  emailNumber    Int
+  emailRef       Int
+  id             Int          @id @default(autoincrement())
+  emailRefN      PhoneNumbers @relation(fields: [emailNumber], references: [id])
+  emailOwn       IDs          @relation(fields: [emailRef], references: [id])
+
+  emailFacebooks Facebooks[]
+  @@index([emailNumber], name: "emailNumber")
+  @@index([emailRef], name: "emailRef")
+}
+
+model Banks {
+  bankName   String
+  bankNumber String
+  bankStatus String
+  bankRef    Int
+  id         Int     @id @default(autoincrement())
+  bankOwn    IDs     @relation(fields: [bankRef], references: [id])
+  bankCard   Cards[]
+
+  @@index([bankRef], name: "bankRef")
+}
+
+model Cards {
+  cardNumber String
+  cardExp    String
+  cardCVV    String
+  cardRef    Int
+  id         Int    @id @default(autoincrement())
+  cardOwn    Banks  @relation(fields: [cardRef], references: [id])
+
+  @@index([cardRef], name: "cardRef")
+}
+
+model Facebooks {
+  id                     Int          @id @default(autoincrement())
+  facebookID             String
+  facebookName           String
+  facebookUsername       String
+  facebookPassword       String
+  facebookEmail          Email        @relation(fields: [facebookEmailRef], references: [id])
+  facebookEmailRef       Int
+  facebookNumberPhoneRef Int
+  facebookNumberPhone    PhoneNumbers @relation(fields: [facebookNumberPhoneRef], references: [id])
+  facebookPhoto          String
+  facebookRef            Int
+  facebookOwn            IDs          @relation(fields: [facebookRef], references: [id])
+
+
+
+
+  @@index([facebookRef], name: "facebookRef")
+}
+
+model Servers {
+  id             Int    @id @default(autoincrement())
+  serverProvider String
+  serverName     String
+  serverIP       String
+
+
+}
+
+model Domain {
+  id         Int    @id @default(autoincrement())
+  domainName String
+  domainEXP  String
+  domainRef  Int
+  domainOwn  IDs    @relation(fields: [domainRef], references: [id])
+
+  @@index([domainRef], name: "domainRef")
+}

@@ -1,0 +1,66 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  ~/WebpTool/bin/:/usr/local/Webptool/Webptool/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/WebpTool/bin/:/Applications/Postgres.app/Contents/Versions/12/bin:/Applications/Postgres.app/Contents/Versions/12/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/premwitakarasinhirunkul/Desktop/Github/Dashboad/backend/package.json: Unexpected token } in JSON at position 760
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+       "name": "backend",
+       "version": "1.0.0",
+       "description": "",
+       "main": "server.ts",
+       "dependencies": {
+            "@prisma/client": "^2.24.1",
+            "@sinclair/typebox": "^0.16.7",
+            "convert-excel-to-json": "^1.7.0",
+            "dotenv": "^10.0.0",
+            "fastify": "^3.17.0",
+            "fastify-auth": "^1.1.0",
+            "fastify-basic-auth": "^2.0.0",
+            "fastify-cli": "^2.13.0",
+            "fastify-cookie": "^5.3.1",
+            "fastify-cors": "^6.0.1",
+            "fastify-jwt": "^3.0.0",
+            "fastify-multipart": "^4.0.6",
+            "fastify-socket.io": "^2.0.0",
+            "quicktype-core": "^6.0.70",
+            "socket.io": "^4.1.2"
+       },
+       "scripts": {
+            "start": "nodemon server.ts",
+       },
+       "keywords": [],
+       "author": "",
+       "license": "ISC",
+       "devDependencies": {
+            "@types/node": "^15.12.2",
+            "json-schema-to-ts": "^1.6.4",
+            "json-schema-to-typescript": "^10.1.4",
+            "nodemon": "^2.0.7",
+            "prisma": "^2.24.1"
+       }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
